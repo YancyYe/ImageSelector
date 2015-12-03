@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ImageSelector</string>
+
+    <string name="folder_name">文件名</string>
+    <string name="image_num">图片数量</string>
+    <string name="all_folder">所有图片</string>
+    <string name="sheet">张</string>
+    <string name="shoot">拍摄照片</string>
+    <string name="picture">图片</string>
+    <string name="finish">完成</string>
+    <string name="temp_date">2015年12月2日</string>
+    <string name="msg_no_camera">没有系统相机</string>
+    <string name="msg_amount_limit">已经达到最高选择数量</string>
+
+</resources>

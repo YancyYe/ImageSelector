@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/photo_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerInside"
+        android:src="@mipmap/photo" />
+
+    <View
+        android:id="@+id/photo_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/photo_mask"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/photo_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:contentDescription="@null"
+        android:src="@mipmap/select_uncheck" />
+
+</FrameLayout>
