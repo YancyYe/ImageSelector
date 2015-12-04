@@ -3,37 +3,63 @@ package com.yancy.imageselectordemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.yancy.imageselector.ImageSelectorActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Yancy on 2015/12/4.
+ */
 public class MainActivity extends AppCompatActivity {
+
+
+    private Adapter adapter;
+
+    private List<String> path = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+        Button but = (Button) super.findViewById(R.id.but);
+        RecyclerView recycler = (RecyclerView) super.findViewById(R.id.recycler);
+
+        but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ImageSelectorActivity.class);
 
-                // 是否显示调用相机拍照
+                // Capturing Photos
                 intent.putExtra(ImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
 
-                // 最大图片选择数量
+                // Max Picture Number
                 intent.putExtra(ImageSelectorActivity.EXTRA_SELECT_COUNT, 9);
 
-                // 设置模式 (支持 单选/MultiImageSelectorActivity.MODE_SINGLE 或者 多选/MultiImageSelectorActivity.MODE_MULTI)
+                /**
+                 * Setting Pattern
+                 * Radio        :    ImageSelectorActivity.MODE_SINGLE
+                 * MultiSelect  :    ImageSelectorActivity.MODE_MULTI
+                 */
                 intent.putExtra(ImageSelectorActivity.EXTRA_SELECT_MODE, ImageSelectorActivity.MODE_MULTI);
 
                 startActivityForResult(intent, REQUEST_IMAGE);
             }
         });
+
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        recycler.setLayoutManager(gridLayoutManager);
+        adapter = new Adapter(this, path);
+        recycler.setAdapter(adapter);
+
     }
 
 
@@ -42,15 +68,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE) {
-            if (resultCode == RESULT_OK) {
-                // 获取返回的图片列表
-                List<String> path = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
+            // Get Image Path List
+            List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
 
-                for (String s : path) {
-                    Log.i("------", s);
-                }
+            for (String path : pathList) {
+                Log.i("ImagePathList", path);
             }
+
+            path.clear();
+            path.addAll(pathList);
+            adapter.notifyDataSetChanged();
+
+
         }
     }
 }
