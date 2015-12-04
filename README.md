@@ -1,9 +1,9 @@
-# Android Image Selector
+ï»¿# Android Image Selector
  
 
 ## Demo
  
- #### [ÖÐÎÄÎÄµµ](https://github.com/yancyworld/ImageSelector/blob/master/README-cn.md)
+ #### [ä¸­æ–‡æ–‡æ¡£](https://github.com/yancyworld/ImageSelector/blob/master/README-cn.md)
  
  
 ![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
