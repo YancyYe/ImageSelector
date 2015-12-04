@@ -3,7 +3,7 @@
 
 ## Demo
  
- #### [Ó¢ÎÄ°æÎÄµµ](https://github.com/yancyworld/ImageSelector/blob/master/README.md)
+ #### [English Doc](https://github.com/yancyworld/ImageSelector/blob/master/README.md)
  
  
 ![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)

@@ -3,7 +3,7 @@
 
 ## Demo
  
- #### [中文版文档](https://github.com/yancyworld/ImageSelector/blob/master/README-cn.md)
+ #### [中文文档](https://github.com/yancyworld/ImageSelector/blob/master/README-cn.md)
  
  
 ![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
