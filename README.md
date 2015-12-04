@@ -3,12 +3,12 @@
 
 ## Demo
  
- #### [中文文档](https://github.com/yancyworld/ImageSelector/blob/master/README-cn.md)
+ #### [中文文档](https://github.com/YancyYe/ImageSelector/blob/master/README-cn.md)
  
  
-![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
+![](https://github.com/YancyYe/ImageSelector/blob/master/resource/ImageSelector.gif)
 
-[Download Apk](https://github.com/yancyworld/ImageSelector/blob/master/resource/app-debug.apk)
+[Download Apk](https://github.com/YancyYe/ImageSelector/blob/master/resource/app-debug.apk)
  
 ## Usage
 
@@ -93,7 +93,7 @@ Add the Code to your onActivityResult:
     }
 ```
 
-[Code example](https://github.com/yancyworld/ImageSelector/blob/master/app/src/main/java/com/yancy/imageselectordemo/MainActivity.java)
+[Code example](https://github.com/YancyYe/ImageSelector/blob/master/app/src/main/java/com/yancy/imageselectordemo/MainActivity.java)
  
 ====
  

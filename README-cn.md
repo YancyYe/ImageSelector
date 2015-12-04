@@ -3,12 +3,12 @@
 
 ## Demo
  
- #### [English Doc](https://github.com/yancyworld/ImageSelector/blob/master/README.md)
+ #### [English Doc](https://github.com/YancyYe/ImageSelector/blob/master/README.md)
  
  
-![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
+![](https://github.com/YancyYe/ImageSelector/blob/master/resource/ImageSelector.gif)
 
-[Download Apk](https://github.com/yancyworld/ImageSelector/blob/master/resource/app-debug.apk)
+[Download Apk](https://github.com/YancyYe/ImageSelector/blob/master/resource/app-debug.apk)
  
 ## 使用说明
 
@@ -98,7 +98,7 @@ private static int REQUEST_IMAGE = 1;
     }
 ```
 
-[代码示例](https://github.com/yancyworld/ImageSelector/blob/master/app/src/main/java/com/yancy/imageselectordemo/MainActivity.java)
+[代码示例](https://github.com/YancyYe/ImageSelector/blob/master/app/src/main/java/com/yancy/imageselectordemo/MainActivity.java)
  
 ====
  
