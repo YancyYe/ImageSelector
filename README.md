@@ -6,9 +6,9 @@ You can easily load images from an internet URL, drawable, or file. And there ar
  
 ## Demo
  
-![](https://github.com/yancyworld/ImageSelector/resource/ImageSelector.gif)
+![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
 
-[Download Apk](https://github.com/yancyworld/ImageSelector/resource/app-debug.apk)
+[Download Apk](https://github.com/yancyworld/ImageSelector/blob/master/resource/app-debug.apk)
  
 ## Usage
 
