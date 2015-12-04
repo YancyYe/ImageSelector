@@ -6,9 +6,9 @@ You can easily load images from an internet URL, drawable, or file. And there ar
  
 ## Demo
  
-![](gif)
+![](https://github.com/yancyworld/ImageSelector/resource/ImageSelector.gif)
 
-[Download Apk](https://github.com/daimajia/AndroidImageSlider/releases/download/v1.0.8/demo-1.0.8.apk)
+[Download Apk](https://github.com/yancyworld/ImageSelector/resource/app-debug.apk)
  
 ## Usage
 
