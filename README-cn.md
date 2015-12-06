@@ -1,4 +1,4 @@
-# GalleryFinal简介
+# ImageSelector 简介
 Android自定义相册，实现了拍照、图片选择（单选/多选）、ImageLoader无绑定 任由开发者选择
 
 ## Demo
@@ -20,7 +20,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、ImageLoader无绑定 任由开发
 
 
 ## 截图展示
-![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
+![](https://github.com/YancyYe/ImageSelector/blob/master/resource/ImageSelector.png)
 
  
 ## 使用说明
