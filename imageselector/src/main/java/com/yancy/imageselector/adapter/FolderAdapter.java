@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.yancy.imageselector.ImageConfig;
 import com.yancy.imageselector.R;
 import com.yancy.imageselector.bean.Folder;
 
-import java.io.File;
 import java.util.List;
 
 
 /**
+ * Folder Adapter
  * Created by Yancy on 2015/12/2.
  */
 public class FolderAdapter extends BaseAdapter {
@@ -24,13 +24,16 @@ public class FolderAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater mLayoutInflater;
     private List<Folder> folderList;
-    private final static String TAG = "Folder1Adapter";
+    private final static String TAG = "FolderAdapter";
 
     private int lastSelected = 0;
 
-    public FolderAdapter(Context context) {
+    private ImageConfig imageConfig;
+
+    public FolderAdapter(Context context, ImageConfig imageConfig) {
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
+        this.imageConfig = imageConfig;
     }
 
     public void setData(List<Folder> folders) {
@@ -76,11 +79,14 @@ public class FolderAdapter extends BaseAdapter {
 
                 if (folderList.size() > 0) {
                     Folder folder = folderList.get(0);
-                    Glide.with(context)
-                            .load(new File(folder.cover.path))
-                            .placeholder(R.mipmap.imageselector_photo)
-                            .centerCrop()
-                            .into(holder.folder_image);
+
+                    imageConfig.getImageLoader().displayImage(context, folder.cover.path, holder.folder_image);
+
+//                    Glide.with(context)
+//                            .load(new File(folder.cover.path))
+//                            .placeholder(R.mipmap.imageselector_photo)
+//                            .centerCrop()
+//                            .into(holder.folder_image);
                 }
             } else {
 
@@ -88,11 +94,13 @@ public class FolderAdapter extends BaseAdapter {
                 holder.folder_name_text.setText(folder.name);
                 holder.image_num_text.setText("" + folder.images.size() + (context.getResources().getText(R.string.sheet)));
 
-                Glide.with(context)
-                        .load(new File(folder.cover.path))
-                        .placeholder(R.mipmap.imageselector_photo)
-                        .centerCrop()
-                        .into(holder.folder_image);
+                imageConfig.getImageLoader().displayImage(context, folder.cover.path, holder.folder_image);
+
+//                Glide.with(context)
+//                        .load(new File(folder.cover.path))
+//                        .placeholder(R.mipmap.imageselector_photo)
+//                        .centerCrop()
+//                        .into(holder.folder_image);
             }
 
             if (lastSelected == position) {

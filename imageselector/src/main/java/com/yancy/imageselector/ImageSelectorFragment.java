@@ -13,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -41,23 +40,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * ImageSelectorFragment
  * Created by Yancy on 2015/12/2.
  */
 public class ImageSelectorFragment extends Fragment {
-
-    private final static String TAG = "ImageSelectorFragment";
-
-    public static final String EXTRA_SELECT_COUNT = "max_select_count";
-
-    public static final String EXTRA_SELECT_MODE = "select_count_mode";
-
-    public static final String EXTRA_SHOW_CAMERA = "show_camera";
-
-    public static final String EXTRA_DEFAULT_SELECTED_LIST = "default_result";
-
-    public static final int MODE_SINGLE = 0;
-
-    public static final int MODE_MULTI = 1;
 
     private static final int LOADER_ALL = 0;
     private static final int LOADER_CATEGORY = 1;
@@ -67,7 +53,6 @@ public class ImageSelectorFragment extends Fragment {
     private List<Folder> folderList = new ArrayList<>();
 
     private List<Image> imageList = new ArrayList<>();
-
 
     private Callback callback;
 
@@ -84,14 +69,13 @@ public class ImageSelectorFragment extends Fragment {
 
     private int gridWidth, gridHeight;
 
-    private int desireImageCount;
-
     private boolean hasFolderGened = false;
-    private boolean isShowCamera = false;
 
     private File tempFile;
 
     private Context context;
+
+    private ImageConfig imageConfig;
 
     @Override
     public void onAttach(Activity activity) {
@@ -103,20 +87,20 @@ public class ImageSelectorFragment extends Fragment {
         }
     }
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.imageselector_main_fragment, container, false);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getActivity().getSupportLoaderManager().initLoader(LOADER_ALL, null, mLoaderCallback);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         context = getActivity();
@@ -126,31 +110,23 @@ public class ImageSelectorFragment extends Fragment {
         grid_image = (GridView) view.findViewById(R.id.grid_image);
         popupAnchorView = view.findViewById(R.id.footer_layout);
 
-
         time_text.setVisibility(View.GONE);
 
         init();
     }
 
     private void init() {
-        desireImageCount = getArguments().getInt(EXTRA_SELECT_COUNT);
-        isShowCamera = getArguments().getBoolean(EXTRA_SHOW_CAMERA, true);
-        final int mode = getArguments().getInt(EXTRA_SELECT_MODE);
+        imageConfig = ImageSelector.getImageConfig();
 
-        if (mode == MODE_MULTI) {
-            ArrayList<String> tmp = getArguments().getStringArrayList(EXTRA_DEFAULT_SELECTED_LIST);
-            if (tmp != null && tmp.size() > 0) {
-                resultList = tmp;
-            }
-        }
+        folderAdapter = new FolderAdapter(context, imageConfig);
 
+        imageAdapter = new ImageAdapter(context, imageList, imageConfig);
 
-        folderAdapter = new FolderAdapter(context);
-
-        imageAdapter = new ImageAdapter(context, imageList);
-        imageAdapter.setShowCamera(isShowCamera);
-        imageAdapter.setShowSelectIndicator(mode == MODE_MULTI);
+        imageAdapter.setShowCamera(imageConfig.isShowCamera());
+        imageAdapter.setShowSelectIndicator(imageConfig.isMutiSelect());
         grid_image.setAdapter(imageAdapter);
+
+        resultList = imageConfig.getPathList();
 
         category_button.setText(R.string.all_folder);
         category_button.setOnClickListener(new View.OnClickListener() {
@@ -227,12 +203,12 @@ public class ImageSelectorFragment extends Fragment {
                         showCameraAction();
                     } else {
                         Image image = (Image) adapterView.getAdapter().getItem(i);
-                        selectImageFromGrid(image, mode);
+                        selectImageFromGrid(image, imageConfig.isMutiSelect());
                     }
                 } else {
                     // 正常操作
                     Image image = (Image) adapterView.getAdapter().getItem(i);
-                    selectImageFromGrid(image, mode);
+                    selectImageFromGrid(image, imageConfig.isMutiSelect());
                 }
             }
         });
@@ -243,7 +219,6 @@ public class ImageSelectorFragment extends Fragment {
     /**
      * 创建弹出的ListView
      */
-
     private void createPopupFolderList(int width, int height) {
         folderPopupWindow = new ListPopupWindow(getActivity());
         folderPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -270,7 +245,7 @@ public class ImageSelectorFragment extends Fragment {
                         if (index == 0) {
                             getActivity().getSupportLoaderManager().restartLoader(LOADER_ALL, null, mLoaderCallback);
                             category_button.setText(R.string.all_folder);
-                            if (isShowCamera) {
+                            if (imageConfig.isShowCamera()) {
                                 imageAdapter.setShowCamera(true);
                             } else {
                                 imageAdapter.setShowCamera(false);
@@ -346,7 +321,7 @@ public class ImageSelectorFragment extends Fragment {
         if (cameraIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             // 设置系统相机拍照后的输出路径
             // 创建临时文件
-            tempFile = FileUtils.createTmpFile(getActivity());
+            tempFile = FileUtils.createTmpFile(getActivity(), imageConfig.getFilePath());
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
             startActivityForResult(cameraIntent, REQUEST_CAMERA);
         } else {
@@ -354,16 +329,16 @@ public class ImageSelectorFragment extends Fragment {
         }
     }
 
-    private void selectImageFromGrid(Image image, int mode) {
+    private void selectImageFromGrid(Image image, boolean isMulti) {
         if (image != null) {
-            if (mode == MODE_MULTI) {
+            if (isMulti) {
                 if (resultList.contains(image.path)) {
                     resultList.remove(image.path);
                     if (callback != null) {
                         callback.onImageUnselected(image.path);
                     }
                 } else {
-                    if (desireImageCount == resultList.size()) {
+                    if (imageConfig.getMaxSize() == resultList.size()) {
                         Toast.makeText(context, R.string.msg_amount_limit, Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -374,7 +349,7 @@ public class ImageSelectorFragment extends Fragment {
                     }
                 }
                 imageAdapter.select(image);
-            } else if (mode == MODE_SINGLE) {
+            } else {
                 if (callback != null) {
                     callback.onSingleImageSelected(image.path);
                 }

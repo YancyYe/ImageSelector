@@ -1,20 +1,23 @@
 package com.yancy.imageselectordemo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.yancy.imageselector.ImageConfig;
+import com.yancy.imageselector.ImageSelector;
 import com.yancy.imageselector.ImageSelectorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * MainActivity
  * Created by Yancy on 2015/12/4.
  */
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Adapter adapter;
 
-    private List<String> path = new ArrayList<>();
+    private ArrayList<String> path = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +38,22 @@ public class MainActivity extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ImageSelectorActivity.class);
 
-                // Capturing Photos
-                intent.putExtra(ImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
+                ImageConfig imageConfig = new ImageConfig.Builder(MainActivity.this, new GlideLoader())    // GlideLoader 可用自己用的缓存库
+                        .steepToolBarColor(getResources().getColor(R.color.blue))   // 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
+                        .titleBgColor(getResources().getColor(R.color.blue))        // 标题的背景颜色 （默认黑色）
+                        .titleSubmitTextColor(getResources().getColor(R.color.white))   // 提交按钮字体的颜色  （默认白色）
+                        .titleTextColor(getResources().getColor(R.color.white))         // 标题颜色 （默认白色）
+                        .mutiSelect()                   // 开启多选   （默认为多选）  (单选 为 singleSelect)
+                        .mutiSelectMaxSize(9)           // 多选时的最大数量   （默认 9 张）
+                        .pathList(path)                 // 已选择的图片路径
+                        .filePath("/ImageSelector/Pictures")     // 拍照后存放的图片路径（默认 /temp/picture）
+                        .showCamera()               // 开启拍照功能 （默认开启）
+                        .build();
 
-                // Max Picture Number
-                intent.putExtra(ImageSelectorActivity.EXTRA_SELECT_COUNT, 9);
 
-                /**
-                 * Setting Pattern
-                 * Radio        :    ImageSelectorActivity.MODE_SINGLE
-                 * MultiSelect  :    ImageSelectorActivity.MODE_MULTI
-                 */
-                intent.putExtra(ImageSelectorActivity.EXTRA_SELECT_MODE, ImageSelectorActivity.MODE_MULTI);
+                ImageSelector.open(imageConfig);   // 开启图片选择器
 
-                startActivityForResult(intent, REQUEST_IMAGE);
             }
         });
 
@@ -63,13 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private static int REQUEST_IMAGE = 1;
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
-            // Get Image Path List
+        if (requestCode == ImageSelector.IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
 
             for (String path : pathList) {

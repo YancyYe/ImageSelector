@@ -9,16 +9,16 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * FileUtils
  * Created by Yancy on 2015/12/2.
  */
 public class FileUtils {
 
-    private final static String TAG = "FileUtils";
 
     private final static String PATTERN = "yyyyMMddHHmmss";
 
 
-    public static File createTmpFile(Context context) {
+    public static File createTmpFile(Context context, String filePath) {
 
         String timeStamp = new SimpleDateFormat(PATTERN, Locale.CHINA).format(new Date());
 
@@ -26,13 +26,12 @@ public class FileUtils {
 
         String externalStorageState = Environment.getExternalStorageState();
 
-        File dir = new File(Environment.getExternalStorageDirectory() + "/temp/pictures");
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
+        File dir = new File(Environment.getExternalStorageDirectory() + filePath);
 
         if (externalStorageState.equals(Environment.MEDIA_MOUNTED)) {
-//            File pic = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
             return new File(dir, fileName + ".jpg");
         } else {
             File cacheDir = context.getCacheDir();

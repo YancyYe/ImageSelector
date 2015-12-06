@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@mipmap/imageselector_select_checked" />
+                android:src="@mipmap/imageselector_selected" />
 
 
         </LinearLayout>

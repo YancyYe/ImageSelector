@@ -3,6 +3,7 @@ package com.yancy.imageselector.bean;
 import java.util.List;
 
 /**
+ * Folder bean
  * Created by Yancy on 2015/12/2.
  */
 public class Folder {

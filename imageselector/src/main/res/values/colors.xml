@@ -5,6 +5,9 @@
     <color name="colorPrimaryDark">#ffff6633</color>
     <color name="colorAccent">#ffff8933</color>
 
+    <color name="image_selector_status_bar">@color/blue</color>
+
+
     <color name="separation">#FFDCDCDC</color>
     <color name="text_gray">#FF999999</color>
     <color name="text_black">#FF333333</color>

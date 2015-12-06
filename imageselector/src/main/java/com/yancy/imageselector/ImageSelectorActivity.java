@@ -2,73 +2,64 @@ package com.yancy.imageselector;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.yancy.imageselector.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
 
 /**
+ * ImageSelectorActivity
  * Created by Yancy on 2015/12/2.
  */
 public class ImageSelectorActivity extends FragmentActivity implements ImageSelectorFragment.Callback {
 
-    private final static String TAG = "ImageSelectorActivity";
-
-    public static final String EXTRA_SELECT_COUNT = "max_select_count";
-
-    public static final String EXTRA_SELECT_MODE = "select_count_mode";
-
-    public static final String EXTRA_SHOW_CAMERA = "show_camera";
 
     public static final String EXTRA_RESULT = "select_result";
 
-    public static final String EXTRA_DEFAULT_SELECTED_LIST = "default_list";
-
-    public static final int MODE_SINGLE = 0;
-
-    public static final int MODE_MULTI = 1;
-
     private ArrayList<String> pathList = new ArrayList<>();
-    private TextView submitButton;
-    private int defaultCount;
 
-    private Intent intent;
+    private ImageConfig imageConfig;
+
+    private TextView title_text;
+    private TextView submitButton;
+    private RelativeLayout imageselector_title_bar_layout;
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imageselector_activity);
 
-        intent = getIntent();
-        defaultCount = intent.getIntExtra(EXTRA_SELECT_COUNT, 9);
-        int mode = intent.getIntExtra(EXTRA_SELECT_MODE, MODE_MULTI);
-        boolean isShow = intent.getBooleanExtra(EXTRA_SHOW_CAMERA, true);
-        if (mode == MODE_MULTI && intent.hasExtra(EXTRA_DEFAULT_SELECTED_LIST)) {
-            pathList = intent.getStringArrayListExtra(EXTRA_DEFAULT_SELECTED_LIST);
-        }
+        imageConfig = ImageSelector.getImageConfig();
 
-        Bundle bundle = new Bundle();
-        bundle.putInt(ImageSelectorFragment.EXTRA_SELECT_COUNT, defaultCount);
-        bundle.putInt(ImageSelectorFragment.EXTRA_SELECT_MODE, mode);
-        bundle.putBoolean(ImageSelectorFragment.EXTRA_SHOW_CAMERA, isShow);
-        bundle.putStringArrayList(ImageSelectorFragment.EXTRA_DEFAULT_SELECTED_LIST, pathList);
+        Utils.hideTitleBar(this, R.id.imageselector_activity_layout, imageConfig.getSteepToolBarColor());
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.image_grid, Fragment.instantiate(this, ImageSelectorFragment.class.getName(), bundle))
+                .add(R.id.image_grid, Fragment.instantiate(this, ImageSelectorFragment.class.getName(), null))
                 .commit();
 
         submitButton = (TextView) super.findViewById(R.id.title_right);
-
+        title_text = (TextView) super.findViewById(R.id.title_text);
+        imageselector_title_bar_layout = (RelativeLayout) super.findViewById(R.id.imageselector_title_bar_layout);
 
         init();
 
     }
 
     private void init() {
+
+        submitButton.setTextColor(imageConfig.getTitleSubmitTextColor());
+        title_text.setTextColor(imageConfig.getTitleTextColor());
+        imageselector_title_bar_layout.setBackgroundColor(imageConfig.getTitleBgColor());
+
+        pathList = imageConfig.getPathList();
+
 
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +74,7 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
             submitButton.setText(R.string.finish);
             submitButton.setEnabled(false);
         } else {
-            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + defaultCount + ")");
+            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + imageConfig.getMaxSize() + ")");
             submitButton.setEnabled(true);
         }
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +112,7 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
             pathList.add(path);
         }
         if (pathList.size() > 0) {
-            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + defaultCount + ")");
+            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + imageConfig.getMaxSize() + ")");
             if (!submitButton.isEnabled()) {
                 submitButton.setEnabled(true);
             }
@@ -132,9 +123,9 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
     public void onImageUnselected(String path) {
         if (pathList.contains(path)) {
             pathList.remove(path);
-            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + defaultCount + ")");
+            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + imageConfig.getMaxSize() + ")");
         } else {
-            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + defaultCount + ")");
+            submitButton.setText((getResources().getText(R.string.finish)) + "(" + pathList.size() + "/" + imageConfig.getMaxSize() + ")");
         }
         if (pathList.size() == 0) {
             submitButton.setText(R.string.finish);

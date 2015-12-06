@@ -8,16 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.yancy.imageselector.ImageConfig;
 import com.yancy.imageselector.R;
 import com.yancy.imageselector.bean.Image;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 图片Adapter
+ * Image Adapter
  * Created by Yancy on 2015/12/2.
  */
 public class ImageAdapter extends BaseAdapter {
@@ -38,11 +37,14 @@ public class ImageAdapter extends BaseAdapter {
     private int mItemSize;
     private GridView.LayoutParams mItemLayoutParams;
 
+    private ImageConfig imageConfig;
 
-    public ImageAdapter(Context context, List<Image> imageList) {
+
+    public ImageAdapter(Context context, List<Image> imageList, ImageConfig imageConfig) {
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.imageList = imageList;
+        this.imageConfig = imageConfig;
         mItemLayoutParams = new GridView.LayoutParams(GridView.LayoutParams.MATCH_PARENT, GridView.LayoutParams.MATCH_PARENT);
     }
 
@@ -136,11 +138,9 @@ public class ImageAdapter extends BaseAdapter {
             }
 
             if (mItemSize > 0) {
-                Glide.with(context)
-                        .load(new File(getItem(position).path))
-                        .placeholder(R.mipmap.imageselector_photo)
-                        .centerCrop()
-                        .into(holder.photo_image);
+
+                imageConfig.getImageLoader().displayImage(context, getItem(position).path, holder.photo_image);
+
             }
         }
 

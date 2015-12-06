@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="ImageSelectorTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

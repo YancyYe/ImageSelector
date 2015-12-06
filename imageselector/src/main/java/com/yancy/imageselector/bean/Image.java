@@ -1,6 +1,7 @@
 package com.yancy.imageselector.bean;
 
 /**
+ * Image bean
  * Created by Yancy on 2015/12/2.
  */
 public class Image {
