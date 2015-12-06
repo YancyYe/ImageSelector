@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="centerInside"
-        android:src="@mipmap/photo" />
+        android:src="@mipmap/imageselector_photo" />
 
     <View
         android:id="@+id/photo_mask"
@@ -25,6 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|right"
         android:contentDescription="@null"
-        android:src="@mipmap/select_uncheck" />
+        android:src="@mipmap/imageselector_select_uncheck" />
 
 </FrameLayout>

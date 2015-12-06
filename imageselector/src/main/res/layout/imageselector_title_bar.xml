@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
-            android:src="@mipmap/back" />
+            android:src="@mipmap/imageselector_back" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:background="@drawable/title_right_bg"
+            android:background="@drawable/imageselector_title_right_bg"
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/finish"

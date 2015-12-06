@@ -102,7 +102,7 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
 
     private void exit() {
         finish();
-        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+        overridePendingTransition(R.anim.imageselector_in_from_left, R.anim.imageselector_out_to_right);
     }
 
 

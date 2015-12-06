@@ -125,10 +125,10 @@ public class ImageAdapter extends BaseAdapter {
             if (showSelectIndicator) {
                 holder.photo_check.setVisibility(View.VISIBLE);
                 if (selectedImageList.contains(getItem(position))) {
-                    holder.photo_check.setImageResource(R.mipmap.select_checked);
+                    holder.photo_check.setImageResource(R.mipmap.imageselector_select_checked);
                     holder.photo_mask.setVisibility(View.VISIBLE);
                 } else {
-                    holder.photo_check.setImageResource(R.mipmap.select_uncheck);
+                    holder.photo_check.setImageResource(R.mipmap.imageselector_select_uncheck);
                     holder.photo_mask.setVisibility(View.GONE);
                 }
             } else {
@@ -138,7 +138,7 @@ public class ImageAdapter extends BaseAdapter {
             if (mItemSize > 0) {
                 Glide.with(context)
                         .load(new File(getItem(position).path))
-                        .placeholder(R.mipmap.photo)
+                        .placeholder(R.mipmap.imageselector_photo)
                         .centerCrop()
                         .into(holder.photo_image);
             }

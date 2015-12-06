@@ -78,7 +78,7 @@ public class FolderAdapter extends BaseAdapter {
                     Folder folder = folderList.get(0);
                     Glide.with(context)
                             .load(new File(folder.cover.path))
-                            .placeholder(R.mipmap.photo)
+                            .placeholder(R.mipmap.imageselector_photo)
                             .centerCrop()
                             .into(holder.folder_image);
                 }
@@ -90,7 +90,7 @@ public class FolderAdapter extends BaseAdapter {
 
                 Glide.with(context)
                         .load(new File(folder.cover.path))
-                        .placeholder(R.mipmap.photo)
+                        .placeholder(R.mipmap.imageselector_photo)
                         .centerCrop()
                         .into(holder.folder_image);
             }
