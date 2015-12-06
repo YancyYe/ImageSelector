@@ -4,13 +4,12 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.yancy.imageselector.ImageLoader;
 
 /**
  * GlideLoader
  * Created by Yancy on 2015/12/6.
  */
-public class GlideLoader implements ImageLoader {
+public class GlideLoader implements com.yancy.imageselector.ImageLoader {
 
     @Override
     public void displayImage(Context context, String path, ImageView imageView) {

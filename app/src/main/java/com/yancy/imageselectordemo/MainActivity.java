@@ -39,16 +39,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ImageConfig imageConfig = new ImageConfig.Builder(MainActivity.this, new GlideLoader())    // GlideLoader 可用自己用的缓存库
-                        .steepToolBarColor(getResources().getColor(R.color.blue))   // 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
-                        .titleBgColor(getResources().getColor(R.color.blue))        // 标题的背景颜色 （默认黑色）
-                        .titleSubmitTextColor(getResources().getColor(R.color.white))   // 提交按钮字体的颜色  （默认白色）
-                        .titleTextColor(getResources().getColor(R.color.white))         // 标题颜色 （默认白色）
-                        .mutiSelect()                   // 开启多选   （默认为多选）  (单选 为 singleSelect)
-                        .mutiSelectMaxSize(9)           // 多选时的最大数量   （默认 9 张）
-                        .pathList(path)                 // 已选择的图片路径
-                        .filePath("/ImageSelector/Pictures")     // 拍照后存放的图片路径（默认 /temp/picture）
-                        .showCamera()               // 开启拍照功能 （默认开启）
+                ImageConfig imageConfig
+                        = new ImageConfig.Builder(MainActivity.this
+                        // GlideLoader 可用自己用的缓存库
+                        , new GlideLoader())
+                        // 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
+                        .steepToolBarColor(getResources().getColor(R.color.blue))
+                        // 标题的背景颜色 （默认黑色）
+                        .titleBgColor(getResources().getColor(R.color.blue))
+                        // 提交按钮字体的颜色  （默认白色）
+                        .titleSubmitTextColor(getResources().getColor(R.color.white))
+                        // 标题颜色 （默认白色）
+                        .titleTextColor(getResources().getColor(R.color.white))
+                        // 开启多选   （默认为多选）  (单选 为 singleSelect)
+                        .mutiSelect()
+                        // 多选时的最大数量   （默认 9 张）
+                        .mutiSelectMaxSize(9)
+                        // 已选择的图片路径
+                        .pathList(path)
+                        // 拍照后存放的图片路径（默认 /temp/picture）
+                        .filePath("/ImageSelector/Pictures")
+                        // 开启拍照功能 （默认开启）
+                        .showCamera()
                         .build();
 
 
