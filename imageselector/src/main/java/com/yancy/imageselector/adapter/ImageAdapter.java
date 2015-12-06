@@ -107,17 +107,17 @@ public class ImageAdapter extends BaseAdapter {
         int type = getItemViewType(position);
 
         if (type == TYPE_CAMERA) {
-            convertView = mLayoutInflater.inflate(R.layout.item_camera, parent, false);
+            convertView = mLayoutInflater.inflate(R.layout.imageselector_item_camera, parent, false);
             convertView.setTag(null);
         } else if (type == TYPE_NORMAL) {
             ViewHolder holder;
             if (convertView == null) {
-                convertView = mLayoutInflater.inflate(R.layout.item_image, parent, false);
+                convertView = mLayoutInflater.inflate(R.layout.imageselector_item_image, parent, false);
                 holder = new ViewHolder(convertView);
             } else {
                 holder = (ViewHolder) convertView.getTag();
                 if (holder == null) {
-                    convertView = mLayoutInflater.inflate(R.layout.item_image, parent, false);
+                    convertView = mLayoutInflater.inflate(R.layout.imageselector_item_image, parent, false);
                     holder = new ViewHolder(convertView);
                 }
             }

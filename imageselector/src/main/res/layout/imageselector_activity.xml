@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".ImageSelectorActivity">
 
-    <include layout="@layout/title_bar" />
+    <include layout="@layout/imageselector_title_bar" />
 
     <FrameLayout
         android:id="@+id/image_grid"

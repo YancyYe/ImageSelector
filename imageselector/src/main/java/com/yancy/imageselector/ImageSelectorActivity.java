@@ -41,7 +41,7 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.image_main);
+        setContentView(R.layout.imageselector_activity);
 
         intent = getIntent();
         defaultCount = intent.getIntExtra(EXTRA_SELECT_COUNT, 9);

@@ -63,7 +63,7 @@ public class FolderAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.item_folder, parent, false);
+            convertView = mLayoutInflater.inflate(R.layout.imageselector_item_folder, parent, false);
             holder = new ViewHolder(convertView);
         } else {
             holder = (ViewHolder) convertView.getTag();
