@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">MultiImageSelector</string>
-
     <string name="folder_name">FolderName</string>
     <string name="image_num">ImageNum</string>
     <string name="all_folder">All Images</string>

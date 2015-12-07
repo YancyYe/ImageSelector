@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">ImageSelector</string>
-
     <string name="folder_name">文件名</string>
     <string name="image_num">图片数量</string>
     <string name="all_folder">所有图片</string>
