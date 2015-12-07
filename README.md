@@ -89,7 +89,7 @@ public class GlideLoader implements com.yancy.imageselector.ImageLoader {
         .pathList(path)
         // 拍照后存放的图片路径（默认 /temp/picture）
         .filePath("/ImageSelector/Pictures")
-        // 开启拍照功能 （默认开启）
+        // 开启拍照功能 （默认关闭）
         .showCamera()
         .build();
 
@@ -104,7 +104,7 @@ ImageSelector.open(imageConfig);   // 开启图片选择器
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == ImageSelector.IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
         
             // Get Image Path List
             List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
