@@ -3,7 +3,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ## Demo
  
-![](https://github.com/yancyworld/ImageSelector/blob/master/resource/ImageSelector.gif)
+![](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/ImageSelector.gif)
 
 [Download Apk](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/app-debug.apk)
  
@@ -17,7 +17,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 
 ## 截图展示
-![](https://github.com/YancyYe/ImageSelector/blob/master/resource/ImageSelector.png)
+![](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/ImageSelector.png)
 
  
 ## 使用说明
