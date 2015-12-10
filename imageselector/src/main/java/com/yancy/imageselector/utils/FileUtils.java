@@ -22,8 +22,6 @@ public class FileUtils {
 
         String timeStamp = new SimpleDateFormat(PATTERN, Locale.CHINA).format(new Date());
 
-        String fileName = "IMAGE_" + timeStamp;
-
         String externalStorageState = Environment.getExternalStorageState();
 
         File dir = new File(Environment.getExternalStorageDirectory() + filePath);
@@ -32,10 +30,10 @@ public class FileUtils {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            return new File(dir, fileName + ".jpg");
+            return new File(dir, timeStamp + ".jpg");
         } else {
             File cacheDir = context.getCacheDir();
-            return new File(cacheDir, fileName + ".jpg");
+            return new File(cacheDir, timeStamp + ".jpg");
         }
 
     }

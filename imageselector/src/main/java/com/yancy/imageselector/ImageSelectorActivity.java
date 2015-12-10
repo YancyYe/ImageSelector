@@ -1,7 +1,10 @@
 package com.yancy.imageselector;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -29,7 +32,6 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
     private TextView title_text;
     private TextView submitButton;
     private RelativeLayout imageselector_title_bar_layout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,19 +93,56 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
 
     }
 
-    private void exit() {
-        finish();
-        overridePendingTransition(R.anim.imageselector_in_from_left, R.anim.imageselector_out_to_right);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ImageSelector.IMAGE_CROP_CODE && resultCode == RESULT_OK) {
+            Intent intent = new Intent();
+            pathList.add(cropImagePath);
+            intent.putStringArrayListExtra(EXTRA_RESULT, pathList);
+            setResult(RESULT_OK, intent);
+            exit();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void exit() {
+        finish();
+//        overridePendingTransition(R.anim.imageselector_in_from_left, R.anim.imageselector_out_to_right);
+    }
+
+    private String cropImagePath;
+
+    private void crop(String imagePath, int aspectX, int aspectY, int outputX, int outputY) {
+        File file;
+        if (Utils.existSDCard()) {
+            file = new File(Environment.getExternalStorageDirectory() + imageConfig.getFilePath(), Utils.getImageName());
+        } else {
+            file = new File(getCacheDir(), Utils.getImageName());
+        }
+        cropImagePath = file.getAbsolutePath();
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(Uri.fromFile(new File(imagePath)), "image/*");
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", aspectX);
+        intent.putExtra("aspectY", aspectY);
+        intent.putExtra("outputX", outputX);
+        intent.putExtra("outputY", outputY);
+        intent.putExtra("return-data", false);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+        startActivityForResult(intent, ImageSelector.IMAGE_CROP_CODE);
+    }
 
     @Override
     public void onSingleImageSelected(String path) {
-        Intent data = new Intent();
-        pathList.add(path);
-        data.putStringArrayListExtra(EXTRA_RESULT, pathList);
-        setResult(RESULT_OK, data);
-        exit();
+        if (imageConfig.isCrop()) {
+            crop(path, imageConfig.getAspectX(), imageConfig.getAspectY(), imageConfig.getOutputX(), imageConfig.getOutputY());
+        } else {
+            Intent data = new Intent();
+            pathList.add(path);
+            data.putStringArrayListExtra(EXTRA_RESULT, pathList);
+            setResult(RESULT_OK, data);
+            exit();
+        }
     }
 
     @Override
@@ -142,5 +181,17 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
             setResult(RESULT_OK, data);
             exit();
         }
+        if (imageFile != null) {
+            if (imageConfig.isCrop()) {
+                crop(imageFile.getAbsolutePath(), imageConfig.getAspectX(), imageConfig.getAspectY(), imageConfig.getOutputX(), imageConfig.getOutputY());
+            } else {
+                Intent data = new Intent();
+                pathList.add(imageFile.getAbsolutePath());
+                data.putStringArrayListExtra(EXTRA_RESULT, pathList);
+                setResult(RESULT_OK, data);
+                exit();
+            }
+        }
+
     }
 }

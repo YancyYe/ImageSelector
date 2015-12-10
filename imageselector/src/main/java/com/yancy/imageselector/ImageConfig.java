@@ -16,6 +16,12 @@ public class ImageConfig implements Serializable {
 
     private boolean showCamera;
 
+    private boolean crop;
+    private int aspectX;
+    private int aspectY;
+    private int outputX;
+    private int outputY;
+
     private Activity activity;
     private ImageLoader imageLoader;
 
@@ -39,6 +45,12 @@ public class ImageConfig implements Serializable {
         this.pathList = builder.pathList;
         this.filePath = builder.filePath;
 
+        this.crop = builder.crop;
+        this.aspectX = builder.aspectX;
+        this.aspectY = builder.aspectY;
+        this.outputX = builder.outputX;
+        this.outputY = builder.outputY;
+
 
         this.titleBgColor = builder.titleBgColor;
         this.titleTextColor = builder.titleTextColor;
@@ -51,6 +63,12 @@ public class ImageConfig implements Serializable {
         private boolean mutiSelect = true;
         private int maxSize = 9;
         private boolean showCamera = false;
+
+        private boolean crop = false;
+        private int aspectX = 1;
+        private int aspectY = 1;
+        private int outputX = 500;
+        private int outputY = 500;
 
         private Activity activity;
         private ImageLoader imageLoader;
@@ -73,6 +91,20 @@ public class ImageConfig implements Serializable {
 
         public Builder mutiSelect() {
             this.mutiSelect = true;
+            return this;
+        }
+
+        public Builder crop() {
+            this.crop = true;
+            return this;
+        }
+
+        public Builder crop(int aspectX, int aspectY, int outputX, int outputY) {
+            this.crop = true;
+            this.aspectX = aspectX;
+            this.aspectY = aspectY;
+            this.outputX = outputX;
+            this.outputY = outputY;
             return this;
         }
 
@@ -127,6 +159,26 @@ public class ImageConfig implements Serializable {
         public ImageConfig build() {
             return new ImageConfig(this);
         }
+    }
+
+    public boolean isCrop() {
+        return crop;
+    }
+
+    public int getAspectX() {
+        return aspectX;
+    }
+
+    public int getAspectY() {
+        return aspectY;
+    }
+
+    public int getOutputX() {
+        return outputX;
+    }
+
+    public int getOutputY() {
+        return outputY;
     }
 
     public boolean isMutiSelect() {

@@ -7,6 +7,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Utils
@@ -45,6 +48,11 @@ public class Utils {
      */
     public static boolean existSDCard() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+    public static String getImageName() {
+        String PATTERN = "yyyyMMddHHmmss";
+        return new SimpleDateFormat(PATTERN, Locale.CHINA).format(new Date()) + ".jpg";
     }
 
 }

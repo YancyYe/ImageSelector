@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recycler.setLayoutManager(gridLayoutManager);
         adapter = new Adapter(this, path);

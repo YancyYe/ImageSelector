@@ -7,14 +7,12 @@
 
     <color name="image_selector_status_bar">@color/blue</color>
 
-
     <color name="separation">#FFDCDCDC</color>
     <color name="text_gray">#FF999999</color>
     <color name="text_black">#FF333333</color>
 
     <color name="photo_mask">#88000000</color>
     <color name="dark_gray">#FF343535</color>
-
 
     <color name="background">#181819</color>
     <color name="dull_black">#FF181818</color>

@@ -13,6 +13,7 @@ public class ImageSelector {
 
 
     public static final int IMAGE_REQUEST_CODE = 1002;
+    public static final int IMAGE_CROP_CODE = 1003;
 
     private static ImageConfig mImageConfig;
 
