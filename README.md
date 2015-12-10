@@ -1,7 +1,7 @@
 ﻿# ImageSelector 简介
 Android自定义相册，实现了拍照、图片选择（单选/多选）、ImageLoader无绑定 任由开发者选择
 
-![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/image_1.png)
+![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/image_1.png)           
 ![截图](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/image_2.png)
 
 [Download Apk](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/app-debug.apk)
@@ -18,7 +18,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 ## Gif展示
 
 
-![单选截图](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_1.gif)
+![单选截图](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_1.gif)           
 ![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_2.gif)
 
 ## 版本说明
