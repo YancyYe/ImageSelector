@@ -1,6 +1,8 @@
 package com.yancy.imageselector;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.yancy.imageselector.utils.Utils;
@@ -21,25 +23,46 @@ public class ImageSelector {
         return mImageConfig;
     }
 
-    public static void open(ImageConfig config) {
+    public static void open(Activity activity, ImageConfig config) {
         if (config == null) {
             return;
         }
         mImageConfig = config;
 
         if (config.getImageLoader() == null) {
-            Toast.makeText(config.getActivity(), R.string.open_camera_fail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.open_camera_fail, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!Utils.existSDCard()) {
-            Toast.makeText(config.getActivity(), R.string.empty_sdcard, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.empty_sdcard, Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        Intent intent = new Intent(config.getActivity(), ImageSelectorActivity.class);
-        config.getActivity().startActivityForResult(intent, IMAGE_REQUEST_CODE);
+        Intent intent = new Intent(activity, ImageSelectorActivity.class);
+        activity.startActivityForResult(intent, IMAGE_REQUEST_CODE);
+    }
+
+    public static void open(Fragment fragment, ImageConfig config) {
+        if (config == null) {
+            return;
+        }
+        mImageConfig = config;
+
+        if (config.getImageLoader() == null) {
+            Toast.makeText(fragment.getContext(), R.string.open_camera_fail, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!Utils.existSDCard()) {
+            Toast.makeText(fragment.getContext(), R.string.empty_sdcard, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        Intent intent = new Intent(fragment.getContext(), ImageSelectorActivity.class);
+        fragment.startActivityForResult(intent, IMAGE_REQUEST_CODE);
     }
 
 }
