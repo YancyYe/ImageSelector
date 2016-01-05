@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/imageselector/build.gradle" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/ImageSelectorActivity.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/ImageSelectorFragment.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/adapter/FolderAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/adapter/ImageAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/bean/Folder.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/bean/Image.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/utils/FileUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/imageselector/src/main/java/com/yancy/imageselector/utils/TimeUtils.java" charset="UTF-8" />
+  <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

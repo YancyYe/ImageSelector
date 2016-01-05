@@ -12,6 +12,7 @@ import com.yancy.imageselector.ImageConfig;
 import com.yancy.imageselector.R;
 import com.yancy.imageselector.bean.Folder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class FolderAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater mLayoutInflater;
-    private List<Folder> folderList;
+    private List<Folder> folderList = new ArrayList<>();
     private final static String TAG = "FolderAdapter";
 
     private int lastSelected = 0;
@@ -38,7 +39,7 @@ public class FolderAdapter extends BaseAdapter {
 
     public void setData(List<Folder> folders) {
         if (folders != null && folders.size() > 0) {
-            folderList = folders;
+            folderList.addAll(folders);
         } else {
             folderList.clear();
         }

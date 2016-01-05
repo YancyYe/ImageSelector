@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ImageConfig imageConfig
-                        = new ImageConfig.Builder(MainActivity.this
+                        = new ImageConfig.Builder(
                         // GlideLoader 可用自己用的缓存库
-                        , new GlideLoader())
+                        new GlideLoader())
                         // 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
                         .steepToolBarColor(getResources().getColor(R.color.blue))
                         // 标题的背景颜色 （默认黑色）
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
 
-                ImageSelector.open(imageConfig);   // 开启图片选择器
+                ImageSelector.open(MainActivity.this, imageConfig);   // 开启图片选择器
 
             }
         });

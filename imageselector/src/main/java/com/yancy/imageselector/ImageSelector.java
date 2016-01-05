@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.yancy.imageselector.utils.Utils;
 
 /**
- * Desction
+ * ImageSelector
  * Created by Yancy on 2015/12/6.
  */
 public class ImageSelector {
@@ -51,17 +51,17 @@ public class ImageSelector {
         mImageConfig = config;
 
         if (config.getImageLoader() == null) {
-            Toast.makeText(fragment.getContext(), R.string.open_camera_fail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(fragment.getActivity(), R.string.open_camera_fail, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!Utils.existSDCard()) {
-            Toast.makeText(fragment.getContext(), R.string.empty_sdcard, Toast.LENGTH_SHORT).show();
+            Toast.makeText(fragment.getActivity(), R.string.empty_sdcard, Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        Intent intent = new Intent(fragment.getContext(), ImageSelectorActivity.class);
+        Intent intent = new Intent(fragment.getActivity(), ImageSelectorActivity.class);
         fragment.startActivityForResult(intent, IMAGE_REQUEST_CODE);
     }
 

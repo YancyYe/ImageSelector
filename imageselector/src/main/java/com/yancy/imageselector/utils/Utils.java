@@ -55,4 +55,5 @@ public class Utils {
         return new SimpleDateFormat(PATTERN, Locale.CHINA).format(new Date()) + ".jpg";
     }
 
+
 }

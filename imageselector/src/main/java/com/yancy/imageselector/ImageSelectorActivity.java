@@ -107,7 +107,6 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
 
     private void exit() {
         finish();
-//        overridePendingTransition(R.anim.imageselector_in_from_left, R.anim.imageselector_out_to_right);
     }
 
     private String cropImagePath;
@@ -119,6 +118,8 @@ public class ImageSelectorActivity extends FragmentActivity implements ImageSele
         } else {
             file = new File(getCacheDir(), Utils.getImageName());
         }
+
+
         cropImagePath = file.getAbsolutePath();
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(Uri.fromFile(new File(imagePath)), "image/*");

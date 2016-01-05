@@ -1,5 +1,7 @@
 package com.yancy.imageselector;
 
+import com.yancy.imageselector.utils.FileUtils;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -52,6 +54,8 @@ public class ImageConfig implements Serializable {
         this.titleTextColor = builder.titleTextColor;
         this.titleSubmitTextColor = builder.titleSubmitTextColor;
         this.steepToolBarColor = builder.steepToolBarColor;
+
+        FileUtils.createFile(this.filePath);
 
     }
 

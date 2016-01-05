@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -36,6 +37,30 @@ public class FileUtils {
             return new File(cacheDir, timeStamp + ".jpg");
         }
 
+    }
+
+
+    public static void createFile(String filePath) {
+        String externalStorageState = Environment.getExternalStorageState();
+
+        File dir = new File(Environment.getExternalStorageDirectory() + filePath);
+        File cropFile = new File(Environment.getExternalStorageDirectory() + filePath + "/crop");
+
+        if (externalStorageState.equals(Environment.MEDIA_MOUNTED)) {
+            if (!cropFile.exists()) {
+                cropFile.mkdirs();
+            }
+
+            File file = new File(dir, ".nomedia");
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
     }
 
 
