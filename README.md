@@ -11,8 +11,8 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 * UI重改
 * 所有功能可配置
 * 解决OOM情况
-* 图片手动选择
-* 支持汉语和英语
+* 图片多选、单选
+* 支持裁剪功能
 
 
 ## Gif展示
@@ -22,10 +22,20 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 ![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_2.gif)
 
 ## 版本说明
-* 1.2.0 新增截图功能
-* 1.1.1 修改APP名被覆盖的bug
-* 1.1.0 优化代码，开放部分UI接口
-* 1.0.0 选择图片功能
+### 1.3.0 
+* 合并 由 xxxifan  提供的优化方案，现在在fragment 中也可以进行调用
+* 修改如果手机中没有图片，选择图片夹闪退的问题
+* 隐藏调用该图片选择器时，所拍摄的照片和裁剪的图片，改善选择图片时存在的垃圾图片。
+* 修改最低版本兼容，由原来的 API 15 降到 API 14，兼容 Android 4.0 以上系统。
+
+### 1.2.0 
+* 新增截图功能
+### 1.1.1 
+* 修改APP名被覆盖的bug
+### 1.1.0 
+* 优化代码，开放部分UI接口
+### 1.0.0 
+* 选择图片功能
  
 ## 使用说明
 
@@ -82,7 +92,7 @@ public class GlideLoader implements com.yancy.imageselector.ImageLoader {
 
 ```java
  ImageConfig imageConfig
-      = new ImageConfig.Builder(MainActivity.this, new GlideLoader())
+      = new ImageConfig.Builder(new GlideLoader())
      // 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
      .steepToolBarColor(getResources().getColor(R.color.blue))
      // 标题的背景颜色 （默认黑色）
@@ -97,7 +107,7 @@ public class GlideLoader implements com.yancy.imageselector.ImageLoader {
 ##### 多选
 ```java
  ImageConfig imageConfig
-        = new ImageConfig.Builder(MainActivity.this , new GlideLoader())
+        = new ImageConfig.Builder(new GlideLoader())
         .steepToolBarColor(getResources().getColor(R.color.blue))
         .titleBgColor(getResources().getColor(R.color.blue))
         .titleSubmitTextColor(getResources().getColor(R.color.white))
@@ -115,13 +125,13 @@ public class GlideLoader implements com.yancy.imageselector.ImageLoader {
         .build();
 
 
-ImageSelector.open(imageConfig);   // 开启图片选择器
+ImageSelector.open(MainActivity.this, imageConfig);   // 开启图片选择器
 ```
 
 ##### 单选
 ```java
  ImageConfig imageConfig
-        = new ImageConfig.Builder(MainActivity.this , new GlideLoader())
+        = new ImageConfig.Builder(new GlideLoader())
         .steepToolBarColor(getResources().getColor(R.color.blue))
         .titleBgColor(getResources().getColor(R.color.blue))
         .titleSubmitTextColor(getResources().getColor(R.color.white))
@@ -135,13 +145,13 @@ ImageSelector.open(imageConfig);   // 开启图片选择器
         .build();
 
 
-ImageSelector.open(imageConfig);   // 开启图片选择器
+ImageSelector.open(MainActivity.this, imageConfig);   // 开启图片选择器
 ```
 
 ##### 单选1：1 便捷截图
 ```java
  ImageConfig imageConfig
-        = new ImageConfig.Builder(MainActivity.this , new GlideLoader())
+        = new ImageConfig.Builder(new GlideLoader())
         .steepToolBarColor(getResources().getColor(R.color.blue))
         .titleBgColor(getResources().getColor(R.color.blue))
         .titleSubmitTextColor(getResources().getColor(R.color.white))
@@ -157,13 +167,13 @@ ImageSelector.open(imageConfig);   // 开启图片选择器
         .build();
 
 
-ImageSelector.open(imageConfig);   // 开启图片选择器
+ImageSelector.open(MainActivity.this, imageConfig);   // 开启图片选择器
 ```
 
 ##### 单选自定义截图
 ```java
  ImageConfig imageConfig
-        = new ImageConfig.Builder(MainActivity.this , new GlideLoader())
+        = new ImageConfig.Builder(new GlideLoader())
         .steepToolBarColor(getResources().getColor(R.color.blue))
         .titleBgColor(getResources().getColor(R.color.blue))
         .titleSubmitTextColor(getResources().getColor(R.color.white))
@@ -179,7 +189,7 @@ ImageSelector.open(imageConfig);   // 开启图片选择器
         .build();
 
 
-ImageSelector.open(imageConfig);   // 开启图片选择器
+ImageSelector.open(MainActivity.this, imageConfig);   // 开启图片选择器
 ```
 ### 步骤五：
  
@@ -205,6 +215,5 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
  
 ## 关于作者
-* QQ: 297555818
 * Email: [yancy_world@outlook.com](mailto:yancy_world@outlook.com)
 
