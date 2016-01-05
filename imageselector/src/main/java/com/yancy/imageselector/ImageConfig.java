@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * ImageConfig
  * Created by Yancy on 2015/12/6.
  */
-public class ImageConfig implements Serializable {
+public class ImageConfig {
 
     private boolean mutiSelect;
     private int maxSize;
@@ -218,6 +218,4 @@ public class ImageConfig implements Serializable {
     public String getFilePath() {
         return filePath;
     }
-
 }
-

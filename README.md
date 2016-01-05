@@ -30,13 +30,10 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ### 1.2.0 
 * 新增截图功能
-
 ### 1.1.1 
 * 修改APP名被覆盖的bug
-
 ### 1.1.0 
 * 优化代码，开放部分UI接口
-
 ### 1.0.0 
 * 选择图片功能
  
@@ -48,7 +45,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ```groovy
 dependencies {
-    compile 'com.yancy.imageselector:imageselector:1.2.0'
+    compile 'com.yancy.imageselector:imageselector:1.3.0'
 }
 ```
 
