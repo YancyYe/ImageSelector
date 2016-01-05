@@ -17,6 +17,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ## Gif展示
 
+
 ![单选截图](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_1.gif) 
 ![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_2.gif)
 
@@ -26,18 +27,6 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 * 修改如果手机中没有图片，选择图片夹闪退的问题
 * 隐藏调用该图片选择器时，所拍摄的照片和裁剪的图片，改善选择图片时存在的垃圾图片。
 * 修改最低版本兼容，由原来的 API 15 降到 API 14，兼容 Android 4.0 以上系统。
-
-### 1.2.0 
-* 新增截图功能
-
-### 1.1.1 
-* 修改APP名被覆盖的bug
-
-### 1.1.0 
-* 优化代码，开放部分UI接口
-
-### 1.0.0 
-* 选择图片功能
  
 ## 使用说明
 
@@ -215,6 +204,24 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 [代码示例](https://github.com/YancyYe/ImageSelector/blob/master/app/src/main/java/com/yancy/imageselectordemo/MainActivity.java)
 
+## 历史版本说明
+### 1.3.0 
+* 合并 由 xxxifan  提供的优化方案，现在在fragment 中也可以进行调用
+* 修改如果手机中没有图片，选择图片夹闪退的问题
+* 隐藏调用该图片选择器时，所拍摄的照片和裁剪的图片，改善选择图片时存在的垃圾图片。
+* 修改最低版本兼容，由原来的 API 15 降到 API 14，兼容 Android 4.0 以上系统。
+
+### 1.2.0 
+* 新增截图功能
+
+### 1.1.1 
+* 修改APP名被覆盖的bug
+
+### 1.1.0 
+* 优化代码，开放部分UI接口
+
+### 1.0.0 
+* 选择图片功能
  
 ## 关于作者
 * Email: [yancy_world@outlook.com](mailto:yancy_world@outlook.com)
