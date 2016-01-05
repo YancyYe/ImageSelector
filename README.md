@@ -17,7 +17,6 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ## Gif展示
 
-
 ![单选截图](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_1.gif) 
 ![多选](https://raw.githubusercontent.com/YancyYe/ImageSelector/master/resource/gif_2.gif)
 
@@ -30,10 +29,13 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ### 1.2.0 
 * 新增截图功能
+
 ### 1.1.1 
 * 修改APP名被覆盖的bug
+
 ### 1.1.0 
 * 优化代码，开放部分UI接口
+
 ### 1.0.0 
 * 选择图片功能
  
