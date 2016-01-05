@@ -1,7 +1,5 @@
 package com.yancy.imageselector;
 
-import android.app.Activity;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -22,7 +20,6 @@ public class ImageConfig implements Serializable {
     private int outputX;
     private int outputY;
 
-    private Activity activity;
     private ImageLoader imageLoader;
 
     private int titleBgColor;
@@ -39,7 +36,6 @@ public class ImageConfig implements Serializable {
     private ImageConfig(final Builder builder) {
         this.maxSize = builder.maxSize;
         this.showCamera = builder.showCamera;
-        this.activity = builder.activity;
         this.imageLoader = builder.imageLoader;
         this.mutiSelect = builder.mutiSelect;
         this.pathList = builder.pathList;
@@ -70,7 +66,6 @@ public class ImageConfig implements Serializable {
         private int outputX = 500;
         private int outputY = 500;
 
-        private Activity activity;
         private ImageLoader imageLoader;
 
         private String filePath = "/temp/pictures";
@@ -84,8 +79,7 @@ public class ImageConfig implements Serializable {
         private ArrayList<String> pathList = new ArrayList<String>();
 
 
-        public Builder(Activity activity, ImageLoader imageLoader) {
-            this.activity = activity;
+        public Builder(ImageLoader imageLoader) {
             this.imageLoader = imageLoader;
         }
 
@@ -193,10 +187,6 @@ public class ImageConfig implements Serializable {
         return showCamera;
     }
 
-    public Activity getActivity() {
-        return activity;
-    }
-
     public ImageLoader getImageLoader() {
         return imageLoader;
     }
@@ -226,3 +216,4 @@ public class ImageConfig implements Serializable {
     }
 
 }
+
