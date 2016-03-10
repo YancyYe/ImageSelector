@@ -38,7 +38,7 @@ Android自定义相册，实现了拍照、图片选择（单选/多选）、Ima
 
 ```groovy
 dependencies {
-    compile 'com.yancy.imageselector:imageselector:1.3.0'
+    compile 'com.yancy.imageselector:imageselector:1.3.3'
 }
 ```
 
