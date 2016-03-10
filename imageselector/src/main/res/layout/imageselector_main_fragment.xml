@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:horizontalSpacing="2dp"
+        android:listSelector="@android:color/transparent"
         android:numColumns="3"
         android:paddingBottom="?android:attr/actionBarSize"
         android:verticalSpacing="2dp" />

@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         .filePath("/ImageSelector/Pictures")
                         // 开启拍照功能 （默认开启）
                         .showCamera()
+                        .requestCode(REQUEST_CODE)
                         .build();
 
 
@@ -77,11 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static final int REQUEST_CODE = 1000;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ImageSelector.IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
 
             for (String path : pathList) {

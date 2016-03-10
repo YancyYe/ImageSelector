@@ -17,7 +17,7 @@ import java.util.List;
 
 
 /**
- * Folder Adapter
+ * 文件夹适配器
  * Created by Yancy on 2015/12/2.
  */
 public class FolderAdapter extends BaseAdapter {

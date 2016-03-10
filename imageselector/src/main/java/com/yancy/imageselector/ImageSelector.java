@@ -41,7 +41,7 @@ public class ImageSelector {
 
 
         Intent intent = new Intent(activity, ImageSelectorActivity.class);
-        activity.startActivityForResult(intent, IMAGE_REQUEST_CODE);
+        activity.startActivityForResult(intent, mImageConfig.getRequestCode());
     }
 
     public static void open(Fragment fragment, ImageConfig config) {

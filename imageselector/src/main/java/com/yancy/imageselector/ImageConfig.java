@@ -34,6 +34,8 @@ public class ImageConfig {
 
     private ArrayList<String> pathList;
 
+    private int requestCode;
+
 
     private ImageConfig(final Builder builder) {
         this.maxSize = builder.maxSize;
@@ -49,6 +51,7 @@ public class ImageConfig {
         this.outputX = builder.outputX;
         this.outputY = builder.outputY;
 
+        this.requestCode = builder.requestCode;
 
         this.titleBgColor = builder.titleBgColor;
         this.titleTextColor = builder.titleTextColor;
@@ -56,7 +59,6 @@ public class ImageConfig {
         this.steepToolBarColor = builder.steepToolBarColor;
 
         FileUtils.createFile(this.filePath);
-
     }
 
     public static class Builder implements Serializable {
@@ -69,6 +71,7 @@ public class ImageConfig {
         private int aspectY = 1;
         private int outputX = 500;
         private int outputY = 500;
+        private int requestCode = ImageSelector.IMAGE_REQUEST_CODE;
 
         private ImageLoader imageLoader;
 
@@ -103,6 +106,11 @@ public class ImageConfig {
             this.aspectY = aspectY;
             this.outputX = outputX;
             this.outputY = outputY;
+            return this;
+        }
+
+        public Builder requestCode(int requestCode) {
+            this.requestCode = requestCode;
             return this;
         }
 
@@ -217,5 +225,9 @@ public class ImageConfig {
 
     public String getFilePath() {
         return filePath;
+    }
+
+    public int getRequestCode() {
+        return requestCode;
     }
 }

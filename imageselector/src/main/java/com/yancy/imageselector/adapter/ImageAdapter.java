@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Image Adapter
+ * 图片适配器
  * Created by Yancy on 2015/12/2.
  */
 public class ImageAdapter extends BaseAdapter {
