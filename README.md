@@ -1,3 +1,6 @@
+近期将会重构代码，修复bug，感谢各位使用者的支持
+
+
 ﻿# ImageSelector 简介
 Android自定义相册，实现了拍照、图片选择（单选/多选）、ImageLoader无绑定 任由开发者选择
 
