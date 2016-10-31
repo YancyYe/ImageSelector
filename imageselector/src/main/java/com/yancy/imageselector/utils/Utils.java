@@ -15,7 +15,7 @@ import java.util.Locale;
  * Utils
  * Created by Yancy on 2015/12/6.
  */
-public class Utils {
+public class    Utils {
 
     public static int getStatusBarHeight() {
         Class<?> c;

@@ -2,6 +2,9 @@
 
 
 ﻿# ImageSelector 简介
+
+
+####近期将会重构代码，修复bug，感谢各位使用者的支持[重构地址](https://github.com/YancyYe/GalleryPick)
 Android自定义相册，实现了拍照、图片选择（单选/多选）、ImageLoader无绑定 任由开发者选择
 
 ###[GitHub 项目地址](https://github.com/YancyYe/ImageSelector)
