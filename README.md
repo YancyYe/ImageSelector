@@ -1,4 +1,12 @@
-﻿# ImageSelector 简介
+### 本项目已停止维护
+
+### 本项目的背景是当时没有十分好用的图片选择的库，所以自己写了一个。
+
+### 目前已经找到一个功能很齐全的库 [PictureSelector](https://github.com/LuckSiege/PictureSelector) 推荐大家使用
+
+
+
+# ImageSelector 简介
 
 
 ####近期将会重构代码，修复bug，感谢各位使用者的支持[重构地址](https://github.com/YancyYe/GalleryPick)
